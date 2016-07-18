@@ -64,6 +64,12 @@ namespace MVCBase.Controllers
        
             return View(model);
         }
-       
+        public ActionResult MigrateData(IEnumerable<VesselVisitModel> checkModels)
+        {
+            return null;
+        }
+
+
+
     }
 }
