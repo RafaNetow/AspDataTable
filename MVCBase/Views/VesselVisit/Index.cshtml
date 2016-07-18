@@ -1,0 +1,95 @@
+﻿@using MVCBase.Models.VesselVisit
+@model IEnumerable<MVCBase.Models.VesselVisit.VesselVisitModel>
+@{
+    ViewBag.Title = "Index";
+}
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">New Vessel Visit</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+     
+                @Html.Partial("~/Views/VesselVisit/Create.cshtml", new VesselVisitModel())
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<table id="TableVisit" class="table-bordered" style="width: 100%;">
+    <thead>
+    <tr>
+        <th>Visit</th>
+        <th>Line</th>
+        <th>vesseName</th>
+        <th>phase</th>
+        <th>date ata</th>
+        <th>date atd</th>
+        <th>date eta</th>
+        <th>date etd</th>
+        <th>serv</th>
+
+        <th>edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Line)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VesselName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ata)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Atd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serv)
+
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.Id}, new {@class = "myButton"})
+
+            </td>
+
+        </tr>
+    }
+    </tbody>
+
+
+
+</table>
+
+@*<div class="modal fade" id="myModal" role="dialog">
+    @Html.Partial("~/Views/VesselVisit/Create.cshtml")*@
+@*</div>*@
+<script src="~/js/Contain/Indexjs.js"></script>

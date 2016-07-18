@@ -1,0 +1,23 @@
+﻿@model MVCBase.Models.ContainerAndVesselVisit.ContainnerAndVesselVisitModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table">
+
+
+    <tr>
+        @Html.Partial("~/Views/VesselVisit/Index.cshtml", Model.VesselList)
+        @Html.Partial("~/Views/Container/Index.cshtml", Model.ContainerList)
+    </tr>
+
+</table>
+
+      @Html.Partial("~/Views/Contacts/Index.cshtml")
+
+
+<div>
+    
+</div>

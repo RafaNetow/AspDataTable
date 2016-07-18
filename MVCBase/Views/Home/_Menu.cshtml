@@ -1,0 +1,27 @@
+﻿<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">          
+        @if (Roles.GetRolesForUser(User.Identity.Name).Length != 0)
+        {          
+            if(isAuthorized("n_Admin", "i_Admin")) {
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            }
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+            if(isAuthorized("n_Admin")) {
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            }
+            if(isAuthorized("n_Admin")) {
+                <li>@Html.ActionLink("Salida", "SalidaSingle", "Salidas")</li>
+            }
+        }        
+    </ul>
+    @Html.Partial("_LoginPartial")
+</div>
+@functions {
+    bool isAuthorized(params string[] authorizedRoles) {
+        string[] mUserRoles = Roles.GetRolesForUser(User.Identity.Name);
+        foreach (string mAuthorizedRole in authorizedRoles) {
+            if (mUserRoles.Contains(mAuthorizedRole)) return true;
+        }
+        return false;
+    }
+}

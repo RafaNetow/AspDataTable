@@ -1,0 +1,76 @@
+﻿@using MVCBase.Models.Container
+@using MVCBase.Models.VesselVisit
+@model IEnumerable<MVCBase.Models.Container.ContainerViewModel >
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">New Container</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("~/Views/Container/Create.cshtml", new ContainerViewModel())
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<table id="TableContain" col lang="5" class="display table-bordered" style="width: 100%;" >
+
+    <thead>
+        <tr>
+            <th>equipament</th>
+            <th>typeIso</th>
+            <th>owner</th>
+            <th>typeLenght</th>
+            <th>tareWt</th>
+            <th>safewt</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.equipmentNbr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.typeIso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.owner)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.typeLength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tareWt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.safewt)
+                </td>
+
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+<script src="~/js/VesselVisit/Index.js"></script>
