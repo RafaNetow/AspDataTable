@@ -46,8 +46,8 @@
 
                var count = 0;
                 var array = [];
-               $('#TableVisit').find('tr').each(function () {
-                
+             //  $('#TableVisit').find('tr').each(function () {
+                $('#TableVisit').eq(0).find('tr').each(function () {
                     var row = $(this);
                     if (row.find('input[type="checkbox"]').is
                         (':checked')) {
