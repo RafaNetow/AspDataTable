@@ -926,6 +926,9 @@
     <Compile Include="VesselVisit.cs">
       <DependentUpon>EntityKoala.tt</DependentUpon>
     </Compile>
+    <Compile Include="VesselVisitMirror.cs">
+      <DependentUpon>EntityKoala.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

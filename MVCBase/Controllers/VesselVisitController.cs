@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVCBase.Models.VesselVisit;
 
+
 namespace MVCBase.Controllers
 {
     public class VesselVisitController : Controller
@@ -103,9 +104,33 @@ namespace MVCBase.Controllers
 
 
         }
-
-        public ActionResult MigrateData(IEnumerable<VesselVisitModel> checkModels)
+        [HttpPost]
+        public ActionResult MigrateData(int[] IdList)
         {
+
+            for (int i = 0; i < IdList.Length; i++)
+            {
+                int index = IdList[i];
+                VesselVisit teacher = context.VesselVisit.SingleOrDefault(x => x.id == index);
+               
+                VesselVisitMirror newVesselVisitMirror = new VesselVisitMirror
+                {
+                   
+                    ata = teacher.ata,
+                    atd = teacher.etd,
+                    eta = teacher.eta,
+                    etd = teacher.etd,
+                    id = teacher.id,
+                    line = teacher.line,
+                    phase = teacher.phase,
+                    serv = teacher.serv,
+                    vesselName = teacher.vesselName,
+                    visit = teacher.visit
+                };
+                context.VesselVisitMirror.Add(newVesselVisitMirror);
+                context.SaveChanges();
+            }
+           
             return null;
         }
     }

@@ -12,6 +12,7 @@
         <AssociationConnector Association="Koala2Model.FK_Unit_Container" ManuallyRouted="false" />
         <AssociationConnector Association="Koala2Model.FK_Unit_VesselVisit" ManuallyRouted="false" />
         <AssociationConnector Association="Koala2Model.FK_Unit_VesselVisit1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Koala2Model.VesselVisitMirror" Width="3.25" PointX="6.75" PointY="3.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

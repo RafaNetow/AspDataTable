@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Koala2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Koala2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Container">
           <Key>
             <PropertyRef Name="gKey" />
@@ -42,6 +42,21 @@
           <Property Name="frghtKind" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="VesselVisit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="visit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="line" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="vesselName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="phase" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ata" Type="date" />
+          <Property Name="atd" Type="date" />
+          <Property Name="eta" Type="date" />
+          <Property Name="etd" Type="date" />
+          <Property Name="serv" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VesselVisitMirror">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -97,6 +112,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VesselVisit" EntityType="Self.VesselVisit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VesselVisitMirror" EntityType="Self.VesselVisitMirror" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Unit_Container" Association="Self.FK_Unit_Container">
             <End Role="Container" EntitySet="Container" />
             <End Role="Unit" EntitySet="Unit" />
@@ -110,8 +126,7 @@
             <End Role="Unit" EntitySet="Unit" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Koala2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -225,7 +240,23 @@
             <End Role="VesselVisit" EntitySet="VesselVisit" />
             <End Role="Unit" EntitySet="Unit" />
           </AssociationSet>
+          <EntitySet Name="VesselVisitMirror" EntityType="Koala2Model.VesselVisitMirror" />
         </EntityContainer>
+        <EntityType Name="VesselVisitMirror">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="visit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="line" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="vesselName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phase" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ata" Type="DateTime" Precision="0" />
+          <Property Name="atd" Type="DateTime" Precision="0" />
+          <Property Name="eta" Type="DateTime" Precision="0" />
+          <Property Name="etd" Type="DateTime" Precision="0" />
+          <Property Name="serv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -284,6 +315,22 @@
                 <ScalarProperty Name="eta" ColumnName="eta" />
                 <ScalarProperty Name="etd" ColumnName="etd" />
                 <ScalarProperty Name="serv" ColumnName="serv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VesselVisitMirror">
+            <EntityTypeMapping TypeName="Koala2Model.VesselVisitMirror">
+              <MappingFragment StoreEntitySet="VesselVisitMirror">
+                <ScalarProperty Name="serv" ColumnName="serv" />
+                <ScalarProperty Name="etd" ColumnName="etd" />
+                <ScalarProperty Name="eta" ColumnName="eta" />
+                <ScalarProperty Name="atd" ColumnName="atd" />
+                <ScalarProperty Name="ata" ColumnName="ata" />
+                <ScalarProperty Name="phase" ColumnName="phase" />
+                <ScalarProperty Name="vesselName" ColumnName="vesselName" />
+                <ScalarProperty Name="line" ColumnName="line" />
+                <ScalarProperty Name="visit" ColumnName="visit" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

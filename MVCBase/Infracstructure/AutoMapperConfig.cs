@@ -33,6 +33,7 @@ namespace MVCBase.Infracstructure
                     .ForMember(des => des.typeLength, or => or.MapFrom(f => f.typeLength));
                     
                 cfg.CreateMap<VesselVisit, VesselVisitModel>()
+                    .ForMember(des => des.Id, or => or.MapFrom(f => f.id))
                     .ForMember(des => des.Ata, or => or.MapFrom(f => f.ata))
                     .ForMember(des => des.Atd, or => or.MapFrom(f => f.atd))
                     .ForMember(des => des.Eta, or => or.MapFrom(f => f.eta))
@@ -45,6 +46,7 @@ namespace MVCBase.Infracstructure
                     .ForMember(des => des.Visit, or => or.MapFrom(f => f.visit));
 
                 cfg.CreateMap<VesselVisitModel, VesselVisit>()
+                   .ForMember(des => des.id, or => or.MapFrom(f => f.Id))
                     .ForMember(des => des.ata, or => or.MapFrom(f => f.Ata))
                     .ForMember(des => des.atd, or => or.MapFrom(f => f.Atd))
                     .ForMember(des => des.eta, or => or.MapFrom(f => f.Eta))

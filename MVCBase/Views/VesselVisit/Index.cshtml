@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">New Vessel Visit</button>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" data-keyboard="false" data-backdrop="static" >New Vessel Visit</button><br/>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -26,10 +26,11 @@
 
     </div>
 </div>
-
+<button type="button" class="btn btn-danger" id="impButton">Import</button>
 <table id="TableVisit" class="table-bordered" style="width: 100%;">
     <thead>
     <tr>
+        <th>id</th>
         <th>Visit</th>
         <th>Line</th>
         <th>vesseName</th>
@@ -48,43 +49,46 @@
     {
         <tr>
 
+            <td>
+                @Html.HiddenFor(modelItem => item.Id)
 
-            @Html.HiddenFor(modelItem => item.Id)
+            </td>
+      
              <td>
                 @Html.DisplayFor(modelItem => item.Visit)
-                 @Html.HiddenFor(modelItem => item.Visit)
+             
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Line)
-                @Html.HiddenFor(modelItem => item.Line)
+         
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VesselName)
-                @Html.HiddenFor(modelItem => item.VesselName)
+             
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Phase)
-                @Html.HiddenFor(modelItem => item.Phase)
+           
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ata)
-                @Html.HiddenFor(modelItem => item.Ata)
+         
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Atd)
-                @Html.HiddenFor(modelItem => item.Atd)
+            
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Etd)
-                @Html.HiddenFor(modelItem => item.Etd)
+              
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Eta)
-                @Html.HiddenFor(modelItem => item.Eta)
+               
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Serv)
-                @Html.HiddenFor(modelItem => item.Serv)
+            
 
             </td>
    
@@ -104,7 +108,7 @@
    
 
 </table>
-<button type="button" class="btn btn-danger" id="impButton">Import</button>
+
 @*<div class="modal fade" id="myModal" role="dialog">
     @Html.Partial("~/Views/VesselVisit/Create.cshtml")*@
 @*</div>*@

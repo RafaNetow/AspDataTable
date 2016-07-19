@@ -33,32 +33,62 @@
              
            
            });
-    var data3 = table
+    var data = table
   .rows()
   .data();
-    var data = table.row({ search: 'apply' }).node();
-  
+   
+    
+
  
-    //var rows = table.rows({ search: 'applied' }).nodes();
-    console.log(data3.length);
     $("#impButton")
         .on("click",
             function() {
-                console.log(data);
+
+               var count = 0;
+                var array = [];
+               $('#TableVisit').find('tr').each(function () {
                 
-                var chkbox_all = $('tbody input[type="checkbox"]', data);
-              //  console.log(chkbox_all);
-              
-                data3.each(function () {
-                    var checkBoxCheked = $("input:checkbox:checked").val();
-                    if (checkBoxCheked)
-                        console.log("chequeado");
-                    console.log(checkBoxCheked);
-                    var info = data;
-                    console.log(info);
+                    var row = $(this);
+                    if (row.find('input[type="checkbox"]').is
+                        (':checked')) {
+                            console.log("estas cheked");
+                            console.log(count);
+                            array.push(count);
+                       
+                        }
+                        count++;
+                 
+               });
+
+               console.log(array);
+                $.ajax({
+                    url: "/VesselVisit/MigrateData",
+                    data: JSON.stringify(array),
+                    type: "POST",
+                    contentType: "application/json",
+                    success: function(data) {
+                        alert("todo bien ");    
+                        console.log("todo bien");
+                    }
+               });
+                /*
+                  var count = 0;
+                  var objectsJson = [];
+                  table.rows().every(function () {
+                     if( this.data().find('input:checkbox'))
+                      console.log(this.data());
+  
+  
+                      */
+
+                //  var val = this.$("input:").val();
+                //      console.log(('#item_Id').attr('id'));
+                //   var data =this.data.column[0];
+
+
+            });
+
                
-                    
-                });
                 /*
                 ('#example tfoot th').each(function () {
                     var title = $(this).text();
@@ -86,5 +116,5 @@ $(function () {
         doc.save('sample-file.pdf');
     });
 });
-})
+
        
