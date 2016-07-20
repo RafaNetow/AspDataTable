@@ -80,10 +80,10 @@ namespace MVCBase.Controllers
         }*/
         public ActionResult Edit(int id)
         {
-            VesselVisit VesselVisitEntity = context.VesselVisit.FirstOrDefault(x => x.id == id);
+            VesselVisit vesselVisitEntity = context.VesselVisit.FirstOrDefault(x => x.id == id);
 
 
-            var automapperModel = AutoMapper.Mapper.Map<VesselVisitModel>(VesselVisitEntity);
+            var automapperModel = AutoMapper.Mapper.Map<VesselVisitModel>(vesselVisitEntity);
 
             return View(automapperModel);
 
@@ -134,6 +134,16 @@ namespace MVCBase.Controllers
             }
 
             return null;
+        }
+
+        public ActionResult Information(int id )
+        {
+            VesselVisit vesselVisitEntity = context.VesselVisit.FirstOrDefault(x => x.id == id);
+
+
+            var automapperModel = AutoMapper.Mapper.Map<VesselVisitModel>(vesselVisitEntity);
+
+            return View(automapperModel);
         }
     }
 }

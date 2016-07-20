@@ -185,6 +185,9 @@
     <Content Include="ajax\notify\notifications.html" />
     <Content Include="ajax\notify\tasks.html" />
     <Content Include="ajax\website-template.html" />
+    <Content Include="carousel\PokeBalls.jpg" />
+    <Content Include="carousel\PokemonFut.jpg" />
+    <Content Include="carousel\Portuaria.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -206,6 +209,7 @@
     <Content Include="css\smartadmin-production.min.css" />
     <Content Include="css\smartadmin-rtl.min.css" />
     <Content Include="css\smartadmin-skins.min.css" />
+    <Content Include="css\VesselVisit\Carousel.css" />
     <Content Include="css\your_style.css" />
     <Content Include="EntityKoala.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -964,6 +968,7 @@
     <Content Include="Views\Container\Index.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\Container\Create.cshtml" />
+    <Content Include="Views\VesselVisit\Information.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

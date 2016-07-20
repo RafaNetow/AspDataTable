@@ -26,6 +26,8 @@
 
     </div>
 </div>
+
+
 <button type="button" class="btn btn-danger" id="impButton">Import</button>
 <table id="TableVisit" class="table-bordered" style="width: 100%;">
     <thead>
@@ -42,6 +44,8 @@
         <th>serv</th>
         <th>import</th>
         <th>edit</th>
+        <th>Detalle</th>
+
     </tr>
     </thead>
     <tbody>
@@ -100,6 +104,12 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new {id = item.Id}, new {@class = "btn btn-default"})
 
+            </td>
+            <td>
+                <a href="@Url.Action("Information", "VesselVisit", new {id = item.Id})" class="btn btn-warning">
+                    details
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                </a>
             </td>
 
         </tr>
