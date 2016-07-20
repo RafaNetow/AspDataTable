@@ -33,9 +33,7 @@
              
            
            });
-    var data = table
-  .rows()
-  .data();
+  
    
     
 
@@ -44,21 +42,30 @@
         .on("click",
             function() {
 
-               var count = 0;
+          
                 var array = [];
-             //  $('#TableVisit').find('tr').each(function () {
-                $('#TableVisit').eq(0).find('tr').each(function () {
-                    var row = $(this);
-                    if (row.find('input[type="checkbox"]').is
-                        (':checked')) {
-                            console.log("estas cheked");
-                            console.log(count);
-                            array.push(count);
-                       
-                        }
-                        count++;
-                 
-               });
+            
+                var rows = table.rows({ search: 'applied' }).nodes();
+                var rows2 = table.rows().nodes();
+
+                console.log(rows);
+                console.log(rows2);
+              $('input[type="checkbox"]:checked', rows)        
+                    .each(function() {
+
+                            
+                        var val = $(this).data("unidad");
+                                   
+                     
+                       console.log(val);
+                      array.push(val);
+                      console.log("checked");
+                      console.log(array);
+
+
+                  });
+
+
 
                console.log(array);
                 $.ajax({
@@ -71,50 +78,17 @@
                         console.log("todo bien");
                     }
                });
-                /*
-                  var count = 0;
-                  var objectsJson = [];
-                  table.rows().every(function () {
-                     if( this.data().find('input:checkbox'))
-                      console.log(this.data());
-  
-  
-                      */
-
-                //  var val = this.$("input:").val();
-                //      console.log(('#item_Id').attr('id'));
-                //   var data =this.data.column[0];
+               
 
 
             });
 
                
-                /*
-                ('#example tfoot th').each(function () {
-                    var title = $(this).text();
-                    $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-                });
-                */
-                //alert(data.);
+            
          
 });
   
     
 
-$(function () {
-
-    var specialElementHandlers = {
-        '#editor': function (element, renderer) {
-            return true;
-        }
-    };
-    $('#cmd').click(function () {
-        var doc = new jsPDF();
-        doc.fromHTML($('#target').html(), 15, 15, {
-            'width': 170, 'elementHandlers': specialElementHandlers
-        });
-        doc.save('sample-file.pdf');
-    });
-});
 
        

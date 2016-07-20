@@ -107,30 +107,32 @@ namespace MVCBase.Controllers
         [HttpPost]
         public ActionResult MigrateData(int[] IdList)
         {
-
-            for (int i = 0; i < IdList.Length; i++)
+            if (IdList != null)
             {
-                int index = IdList[i];
-                VesselVisit teacher = context.VesselVisit.SingleOrDefault(x => x.id == index);
-               
-                VesselVisitMirror newVesselVisitMirror = new VesselVisitMirror
+                for (int i = 0; i < IdList.Length; i++)
                 {
-                   
-                    ata = teacher.ata,
-                    atd = teacher.etd,
-                    eta = teacher.eta,
-                    etd = teacher.etd,
-                    id = teacher.id,
-                    line = teacher.line,
-                    phase = teacher.phase,
-                    serv = teacher.serv,
-                    vesselName = teacher.vesselName,
-                    visit = teacher.visit
-                };
-                context.VesselVisitMirror.Add(newVesselVisitMirror);
-                context.SaveChanges();
+                    int index = IdList[i];
+                    VesselVisit teacher = context.VesselVisit.SingleOrDefault(x => x.id == index);
+
+                    VesselVisitMirror newVesselVisitMirror = new VesselVisitMirror
+                    {
+
+                        ata = teacher.ata,
+                        atd = teacher.etd,
+                        eta = teacher.eta,
+                        etd = teacher.etd,
+                        id = teacher.id,
+                        line = teacher.line,
+                        phase = teacher.phase,
+                        serv = teacher.serv,
+                        vesselName = teacher.vesselName,
+                        visit = teacher.visit
+                    };
+                    context.VesselVisitMirror.Add(newVesselVisitMirror);
+                    context.SaveChanges();
+                }
             }
-           
+
             return null;
         }
     }

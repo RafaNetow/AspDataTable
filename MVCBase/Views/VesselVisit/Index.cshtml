@@ -93,7 +93,7 @@
             </td>
    
             <td>
-                @Html.CheckBoxFor(modelItem => item.Imp)
+                @Html.CheckBoxFor(modelItem => item.Imp, new {data_unidad = item.Id})
                 @Html.HiddenFor(modelItem => item.Imp)
             </td>
 
