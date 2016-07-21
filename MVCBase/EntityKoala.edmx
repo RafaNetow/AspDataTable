@@ -17,6 +17,15 @@
           <Property Name="tareWt" Type="numeric" Precision="15" Scale="2" />
           <Property Name="safewt" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="document" Type="varbinary(max)" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="type" Type="varchar" MaxLength="25" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -26,20 +35,6 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="Unit">
-          <Key>
-            <PropertyRef Name="gkey" />
-          </Key>
-          <Property Name="gkey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="unitNbr" Type="int" Nullable="false" />
-          <Property Name="lineOp" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ibActualVisit" Type="int" />
-          <Property Name="obActualVisit" Type="int" />
-          <Property Name="category" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="vStat" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="tState" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="frghtKind" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="VesselVisit">
           <Key>
@@ -71,60 +66,12 @@
           <Property Name="etd" Type="date" />
           <Property Name="serv" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Unit_Container">
-          <End Role="Container" Type="Self.Container" Multiplicity="1" />
-          <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Container">
-              <PropertyRef Name="gKey" />
-            </Principal>
-            <Dependent Role="Unit">
-              <PropertyRef Name="unitNbr" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Unit_VesselVisit">
-          <End Role="VesselVisit" Type="Self.VesselVisit" Multiplicity="0..1" />
-          <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VesselVisit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Unit">
-              <PropertyRef Name="ibActualVisit" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Unit_VesselVisit1">
-          <End Role="VesselVisit" Type="Self.VesselVisit" Multiplicity="0..1" />
-          <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VesselVisit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Unit">
-              <PropertyRef Name="obActualVisit" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Koala2ModelStoreContainer">
           <EntitySet Name="Container" EntityType="Self.Container" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VesselVisit" EntityType="Self.VesselVisit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VesselVisitMirror" EntityType="Self.VesselVisitMirror" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Unit_Container" Association="Self.FK_Unit_Container">
-            <End Role="Container" EntitySet="Container" />
-            <End Role="Unit" EntitySet="Unit" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Unit_VesselVisit" Association="Self.FK_Unit_VesselVisit">
-            <End Role="VesselVisit" EntitySet="VesselVisit" />
-            <End Role="Unit" EntitySet="Unit" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Unit_VesselVisit1" Association="Self.FK_Unit_VesselVisit1">
-            <End Role="VesselVisit" EntitySet="VesselVisit" />
-            <End Role="Unit" EntitySet="Unit" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -141,7 +88,6 @@
           <Property Name="typeLength" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="tareWt" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="safewt" Type="Decimal" Precision="15" Scale="2" />
-          <NavigationProperty Name="Unit" Relationship="Self.FK_Unit_Container" FromRole="Container" ToRole="Unit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -152,23 +98,6 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Unit">
-          <Key>
-            <PropertyRef Name="gkey" />
-          </Key>
-          <Property Name="gkey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="unitNbr" Type="Int32" Nullable="false" />
-          <Property Name="lineOp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ibActualVisit" Type="Int32" />
-          <Property Name="obActualVisit" Type="Int32" />
-          <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="vStat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="frghtKind" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Container" Relationship="Self.FK_Unit_Container" FromRole="Unit" ToRole="Container" />
-          <NavigationProperty Name="VesselVisit" Relationship="Self.FK_Unit_VesselVisit" FromRole="Unit" ToRole="VesselVisit" />
-          <NavigationProperty Name="VesselVisit1" Relationship="Self.FK_Unit_VesselVisit1" FromRole="Unit" ToRole="VesselVisit" />
         </EntityType>
         <EntityType Name="VesselVisit">
           <Key>
@@ -184,63 +113,13 @@
           <Property Name="eta" Type="DateTime" Precision="0" />
           <Property Name="etd" Type="DateTime" Precision="0" />
           <Property Name="serv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Unit" Relationship="Self.FK_Unit_VesselVisit" FromRole="VesselVisit" ToRole="Unit" />
-          <NavigationProperty Name="Unit1" Relationship="Self.FK_Unit_VesselVisit1" FromRole="VesselVisit" ToRole="Unit" />
         </EntityType>
-        <Association Name="FK_Unit_Container">
-          <End Role="Container" Type="Self.Container" Multiplicity="1" />
-          <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Container">
-              <PropertyRef Name="gKey" />
-            </Principal>
-            <Dependent Role="Unit">
-              <PropertyRef Name="unitNbr" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Unit_VesselVisit">
-          <End Role="VesselVisit" Type="Self.VesselVisit" Multiplicity="0..1" />
-          <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VesselVisit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Unit">
-              <PropertyRef Name="ibActualVisit" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Unit_VesselVisit1">
-          <End Role="VesselVisit" Type="Self.VesselVisit" Multiplicity="0..1" />
-          <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VesselVisit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Unit">
-              <PropertyRef Name="obActualVisit" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Koala2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Container" EntityType="Self.Container" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Unit" EntityType="Self.Unit" />
           <EntitySet Name="VesselVisit" EntityType="Self.VesselVisit" />
-          <AssociationSet Name="FK_Unit_Container" Association="Self.FK_Unit_Container">
-            <End Role="Container" EntitySet="Container" />
-            <End Role="Unit" EntitySet="Unit" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Unit_VesselVisit" Association="Self.FK_Unit_VesselVisit">
-            <End Role="VesselVisit" EntitySet="VesselVisit" />
-            <End Role="Unit" EntitySet="Unit" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Unit_VesselVisit1" Association="Self.FK_Unit_VesselVisit1">
-            <End Role="VesselVisit" EntitySet="VesselVisit" />
-            <End Role="Unit" EntitySet="Unit" />
-          </AssociationSet>
           <EntitySet Name="VesselVisitMirror" EntityType="Koala2Model.VesselVisitMirror" />
+          <EntitySet Name="Documents" EntityType="Koala2Model.Documents" />
         </EntityContainer>
         <EntityType Name="VesselVisitMirror">
           <Key>
@@ -256,6 +135,15 @@
           <Property Name="eta" Type="DateTime" Precision="0" />
           <Property Name="etd" Type="DateTime" Precision="0" />
           <Property Name="serv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="document" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -287,21 +175,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Unit">
-            <EntityTypeMapping TypeName="Koala2Model.Unit">
-              <MappingFragment StoreEntitySet="Unit">
-                <ScalarProperty Name="gkey" ColumnName="gkey" />
-                <ScalarProperty Name="unitNbr" ColumnName="unitNbr" />
-                <ScalarProperty Name="lineOp" ColumnName="lineOp" />
-                <ScalarProperty Name="ibActualVisit" ColumnName="ibActualVisit" />
-                <ScalarProperty Name="obActualVisit" ColumnName="obActualVisit" />
-                <ScalarProperty Name="category" ColumnName="category" />
-                <ScalarProperty Name="vStat" ColumnName="vStat" />
-                <ScalarProperty Name="tState" ColumnName="tState" />
-                <ScalarProperty Name="frghtKind" ColumnName="frghtKind" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="VesselVisit">
             <EntityTypeMapping TypeName="Koala2Model.VesselVisit">
               <MappingFragment StoreEntitySet="VesselVisit">
@@ -330,6 +203,16 @@
                 <ScalarProperty Name="vesselName" ColumnName="vesselName" />
                 <ScalarProperty Name="line" ColumnName="line" />
                 <ScalarProperty Name="visit" ColumnName="visit" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="Koala2Model.Documents">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="document" ColumnName="document" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

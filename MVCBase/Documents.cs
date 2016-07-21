@@ -12,14 +12,11 @@ namespace MVCBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Container
+    public partial class Documents
     {
-        public int gKey { get; set; }
-        public string equipmentNbr { get; set; }
-        public string typeIso { get; set; }
-        public string owner { get; set; }
-        public decimal typeLength { get; set; }
-        public Nullable<decimal> tareWt { get; set; }
-        public Nullable<decimal> safewt { get; set; }
+        public int id { get; set; }
+        public byte[] document { get; set; }
+        public string name { get; set; }
+        public string type { get; set; }
     }
 }

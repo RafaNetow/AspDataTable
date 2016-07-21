@@ -1,9 +1,13 @@
-﻿@model MVCBase.Models.VesselVisit.VesselVisitModel
+﻿@using MVCBase.Models.Documents
+@model MVCBase.Models.VesselVisit.VesselVisitModel
+
 @{
     ViewBag.Title = "Information";
 }
 
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+@Html.HiddenFor(modelItem => Model.Phase)
 <div id="carousel-example-generic" class="carousel slide" data-ride="">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -44,7 +48,7 @@
     </a>
 </div>
 <div class="w3-container w3-red ">
-    <h2>Name of Visual Visit : @Html.DisplayFor(modelItem => Model.VesselName)</h2>
+    <h2>Name of Vessel : @Html.DisplayFor(modelItem => Model.VesselName)</h2>
     <h4>Phase</h4>
     <div data-role="remove" class="tag label label-info  "> @Html.DisplayFor(modelItem => Model.Phase)</div>
 
@@ -68,7 +72,7 @@
         <div class="jarviswidget-ctrls" role="menu">
             <a href="javascript:void(0);" class="button-icon jarviswidget-edit-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Edit Title"><i class="fa fa-cog"></i></a>
             <a href="javascript:void(0);" class="button-icon jarviswidget-min" rel="tooltip" title="" data-placement="bottom" data-original-title="Edit Title"><i class="fa fa-cog"></i></a>
-            <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Edit Title"><i  aria-hidden="true" class="fa-minus "></i></a>
+            <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Edit Title"><i  class="fa-minus "></i></a>
 
         </div>
         <h2><strong>Information</strong> <i>Vessel Visit</i></h2>
@@ -88,13 +92,74 @@
         </div>
         <!-- end widget edit box -->
         <!-- widget content -->
-        <div class="widget-body">
+     
+         <div class="widget-body">
 
-            <h3 class="alert alert-info"> Activate Options Button </h3>
+            <div class="container ">
 
-            <code>data-widget-editbutton</code>
+                <button type="button" class="btn btn-info " data-toggle="collapse" data-target="#Dates">Fechas</button>
+                <div id="Dates" class="collapse ">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h3>Ata</h3>
+                            <p> @Html.DisplayFor(modelItem => Model.Ata) </p>
+                            @Html.HiddenFor(modelItem => Model.Ata)
+                        </div>
+                        <div class="col-lg-6
+                             ">
+                            <h3>Atd</h3>
+                            <p> @Html.DisplayFor(modelItem => Model.Atd) </p>
+                            @Html.HiddenFor(modelItem => Model.Atd)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h3>Eta</h3>
+                            @Html.DisplayFor(modelItem => Model.Eta)
+                            @Html.HiddenFor(modelItem => Model.Eta)
+                        </div>
+                        <div class="col-lg-6">
+                            <h3>Etd</h3>
+                            <p> @Html.DisplayFor(modelItem => Model.Etd) </p>
+                             @Html.HiddenFor(modelItem => Model.Etd)
+                        </div>
 
-        </div>
+
+                    </div>
+
+
+
+
+                </div><br/>
+                <br />
+               
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#Documents">Documents</button>
+                <div id="Documents" class="collapse">
+                    <br/>
+                    @using (Html.BeginForm("SaveDocuments", "VesselVisit", FormMethod.Post, new
+                    {enctype = "multipart/form-data"}))
+                    {
+                        @Html.HiddenFor(modelItem => Model.Id)
+                        @Html.TextBoxFor(m => Model.File, new {type = "file"})
+                        @Html.ValidationMessageFor(m => m.File)
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="SaveDocuments" class="btn btn-default alig"/>
+                            </div>
+                        </div>
+                    }
+                    @{
+                        Html.RenderAction("Index", "Documents");
+                    }
+                </div>
+              
+
+
+
+
+
+            </div>
+
         <!-- end widget content -->
 
     </div>
@@ -105,5 +170,5 @@
 
 
 
-
+</div>
 

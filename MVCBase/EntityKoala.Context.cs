@@ -27,8 +27,8 @@ namespace MVCBase
     
         public virtual DbSet<Container> Container { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Unit> Unit { get; set; }
         public virtual DbSet<VesselVisit> VesselVisit { get; set; }
         public virtual DbSet<VesselVisitMirror> VesselVisitMirror { get; set; }
+        public virtual DbSet<Documents> Documents { get; set; }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVCBase.Models.Documents;
 using MVCBase.Models.VesselVisit;
 
 
@@ -24,7 +26,7 @@ namespace MVCBase.Controllers
             {
                 visitEntity = (from r in context.VesselVisit
 
-                               select r).ToList();
+                    select r).ToList();
             }
             catch (Exception e)
             {
@@ -39,17 +41,18 @@ namespace MVCBase.Controllers
             }
 
 
-            {
+            
                 return View(visitModels);
-            }
+            
         }
 
         public ActionResult Create()
         {
             return View();
         }
+
         [HttpPost]
- 
+
         public ActionResult Create(VesselVisitModel model)
         {
 
@@ -70,6 +73,7 @@ namespace MVCBase.Controllers
 
 
         }
+
         /*   public ActionResult Edit(int id)
         {
             var model = servo.SearchContiner(id);
@@ -78,6 +82,7 @@ namespace MVCBase.Controllers
            
             return View(automapperModel);
         }*/
+
         public ActionResult Edit(int id)
         {
             VesselVisit vesselVisitEntity = context.VesselVisit.FirstOrDefault(x => x.id == id);
@@ -89,6 +94,7 @@ namespace MVCBase.Controllers
 
 
         }
+
         [HttpPost]
         public ActionResult Edit(VesselVisitModel model)
         {
@@ -104,6 +110,7 @@ namespace MVCBase.Controllers
 
 
         }
+
         [HttpPost]
         public ActionResult MigrateData(int[] IdList)
         {
@@ -136,7 +143,7 @@ namespace MVCBase.Controllers
             return null;
         }
 
-        public ActionResult Information(int id )
+        public ActionResult Information(int id)
         {
             VesselVisit vesselVisitEntity = context.VesselVisit.FirstOrDefault(x => x.id == id);
 
@@ -144,6 +151,46 @@ namespace MVCBase.Controllers
             var automapperModel = AutoMapper.Mapper.Map<VesselVisitModel>(vesselVisitEntity);
 
             return View(automapperModel);
+        }
+
+        [HttpPost]
+        public ActionResult SaveDocuments(VesselVisitModel model)
+        {
+
+
+            // Use your file here f
+
+ 
+
+              
+                Console.WriteLine(model.File.FileName);
+                
+                
+                var arrayBytes = ReadFully(model.File.InputStream);
+    var f =         File(arrayBytes, model.File.ContentType);
+            
+                Documents entity = new Documents { document = arrayBytes, name = model.File.FileName, type = model.File.ContentType};
+                context.Documents.Add(entity);
+                context.SaveChanges();
+
+            //File.WriteAllBytes(model.File.InputStream, arrayBytes);
+
+            return RedirectToAction("Information", new { id = model.Id });
+        }
+
+        public static byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[16*1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+
+            }
         }
     }
 }

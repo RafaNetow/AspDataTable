@@ -14,13 +14,6 @@ namespace MVCBase
     
     public partial class VesselVisit
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public VesselVisit()
-        {
-            this.Unit = new HashSet<Unit>();
-            this.Unit1 = new HashSet<Unit>();
-        }
-    
         public int id { get; set; }
         public string visit { get; set; }
         public string line { get; set; }
@@ -31,10 +24,5 @@ namespace MVCBase
         public Nullable<System.DateTime> eta { get; set; }
         public Nullable<System.DateTime> etd { get; set; }
         public string serv { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Unit> Unit { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Unit> Unit1 { get; set; }
     }
 }
