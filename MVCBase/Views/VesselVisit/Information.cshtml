@@ -4,7 +4,9 @@
 @{
     ViewBag.Title = "Information";
 }
-
+<style>
+    
+</style>
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 
 @Html.HiddenFor(modelItem => Model.Phase)
@@ -140,18 +142,20 @@
                     {enctype = "multipart/form-data"}))
                     {
                         @Html.HiddenFor(modelItem => Model.Id)
-                        @Html.TextBoxFor(m => Model.File, new {type = "file"})
-                        @Html.ValidationMessageFor(m => m.File)
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="SaveDocuments" class="btn btn-default alig"/>
+                     
+                            <input id="File" name="File" multiple="" type="file" value="">
+                     
+                            @Html.ValidationMessageFor(m => m.File)
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="SaveDocuments" class="btn btn-default alig" />
+                                </div>
                             </div>
-                        </div>
-                    }
-                    @{
-                        Html.RenderAction("Index", "Documents");
-                    }
-                </div>
+                            }
+                            @{
+                                Html.RenderAction("Index", "Documents");
+                            }
+</div>
               
 
 

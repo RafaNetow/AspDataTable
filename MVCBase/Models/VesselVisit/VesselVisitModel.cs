@@ -43,7 +43,7 @@ namespace MVCBase.Models.VesselVisit
         public string Serv { get; set; }
         public string ControlerOwner { get; set; }
   
-        public HttpPostedFileBase File { get; set; }
+        public HttpPostedFileBase []File { get; set; }
         public  bool Imp { get; set; }
     }
 }

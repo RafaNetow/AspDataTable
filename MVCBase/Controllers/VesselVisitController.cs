@@ -160,18 +160,21 @@ namespace MVCBase.Controllers
 
             // Use your file here f
 
- 
 
-              
-                Console.WriteLine(model.File.FileName);
-                
-                
-                var arrayBytes = ReadFully(model.File.InputStream);
-    var f =         File(arrayBytes, model.File.ContentType);
-            
-                Documents entity = new Documents { document = arrayBytes, name = model.File.FileName, type = model.File.ContentType};
+
+
+            foreach (var f in model.File)
+            {
+                var arrayBytes = ReadFully(f.InputStream);
+                File(arrayBytes, f.ContentType);
+
+                Documents entity = new Documents { document = arrayBytes, name = f.FileName, type = f.ContentType };
                 context.Documents.Add(entity);
                 context.SaveChanges();
+            }
+                
+                
+          
 
             //File.WriteAllBytes(model.File.InputStream, arrayBytes);
 
