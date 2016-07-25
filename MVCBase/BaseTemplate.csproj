@@ -977,6 +977,7 @@
     <Content Include="Views\VesselVisit\Information.cshtml" />
     <Content Include="Views\Documents\Index.cshtml" />
     <Content Include="Views\Documents\Detail.cshtml" />
+    <None Include="Views\Container\Information.cshtml" />
     <None Include="Views\Documents\ShowLuis.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

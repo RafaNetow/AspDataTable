@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVCBase.Models.Container;
 using MVCBase.Models.Documents;
 using MVCBase.Models.VesselVisit;
 
@@ -154,7 +155,7 @@ namespace MVCBase.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveDocuments(VesselVisitModel model)
+        public ActionResult SaveDocuments(ContainerViewModel model)
         {
 
 
@@ -178,7 +179,7 @@ namespace MVCBase.Controllers
 
             //File.WriteAllBytes(model.File.InputStream, arrayBytes);
 
-            return RedirectToAction("Information", new { id = model.Id });
+            return RedirectToAction("Information", new { id = model.gKey });
         }
 
         public static byte[] ReadFully(Stream input)

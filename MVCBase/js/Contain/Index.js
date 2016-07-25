@@ -33,11 +33,46 @@
 
 
            });
+    $('#TableContainer tbody').on('click', 'tr', function () {
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
 
+    });
 
+   
+    $("#TableContainer tr").dblclick(function () {
 
+        var idContainer;
+            $(this).children("td").each(function (index2) {
+                switch (index2) {
+                    case 0: idContainer = $(this).text();
+                        break;
+                }
+                $(this).css("background-color", "#ECF8E0");
+            });
+   
+            $.ajax({
+                url:  "/VesselVisit/Information",
+                data: { id: idContainer },
+                type: "GET",
+                contentType: "application/json ",
+                success: function (html) {
+               
+               
+                    console.log("todo bien");
+                }, error: function (err) {
+                   var url = "/VesselVisit/Information/" + idContainer;
 
-
+                    console.log(err);
+                }
+            });
+       
+    });
     $("#impButton")
         .on("click",
             function () {

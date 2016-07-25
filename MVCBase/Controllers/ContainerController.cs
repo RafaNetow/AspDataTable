@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -153,6 +154,37 @@ namespace MVCBase.Controllers
             }
 
             return null;
+        }
+
+        public ActionResult Information(int  id)
+        {
+            Container containerEntity = context.Container.FirstOrDefault(x => x.gKey == id);
+
+
+             var automapperModel = AutoMapper.Mapper.Map<ContainerViewModel>(containerEntity);
+
+            return View(automapperModel);
+
+        }
+
+        public ActionResult SaveDocuments()
+        {
+
+            return null;
+        }
+        public static byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+
+            }
         }
     }
 

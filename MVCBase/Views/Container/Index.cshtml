@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<table id="TableContainer"  class="display table-bordered" style="width: 100%;">
+<table id="TableContainer"  class="display table-bordered" >
 
     <thead>
         <tr>
@@ -43,6 +43,7 @@
             <th>tareWt</th>
             <th>safewt</th>
             <th>import</th>
+            <th>detail</th>
 
         </tr>
     </thead>
@@ -75,8 +76,14 @@
                     @Html.DisplayFor(modelItem => item.safewt)
                 </td>
                 <td>
-                    @Html.CheckBoxFor(modelItem => item.Imp, new { data_unidad = item.gKey })
+                    @Html.CheckBoxFor(modelItem => item.Imp, new {data_unidad = item.gKey})
                     @Html.HiddenFor(modelItem => item.Imp)
+                </td>
+                <td>
+                    <a href="@Url.Action("Information", "Container", new {id = item.gKey})" class="btn btn-warning">
+                        details
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    </a>
                 </td>
                 
 
