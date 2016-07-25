@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="Koala2Model.VesselVisit" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Koala2Model.VesselVisitMirror" Width="3.25" PointX="6.75" PointY="3.875" />
         <EntityTypeShape EntityType="Koala2Model.Documents" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Koala2Model.ContainerMirror" Width="1.5" PointX="3.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -426,8 +426,9 @@
     <Content Include="js\app.min.js" />
     <Content Include="js\bootstrap\bootstrap.min.js" />
     <Content Include="js\ContainerAndVisit\ChangePartialViews.js" />
-    <Content Include="js\Contain\Indexjs.js" />
+    <Content Include="js\Contain\Index.js" />
     <Content Include="js\demo.min.js" />
+    <Content Include="js\Documents\LoadImage.js" />
     <Content Include="js\libs\jquery-2.0.2.min.js" />
     <Content Include="js\libs\jquery-ui-1.10.3.min.js" />
     <Content Include="js\notification\SmartNotification.min.js" />
@@ -889,6 +890,9 @@
     <Compile Include="Container.cs">
       <DependentUpon>EntityKoala.tt</DependentUpon>
     </Compile>
+    <Compile Include="ContainerMirror.cs">
+      <DependentUpon>EntityKoala.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\ContainerAndVesselVisitController.cs" />
@@ -973,6 +977,7 @@
     <Content Include="Views\VesselVisit\Information.cshtml" />
     <Content Include="Views\Documents\Index.cshtml" />
     <Content Include="Views\Documents\Detail.cshtml" />
+    <None Include="Views\Documents\ShowLuis.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

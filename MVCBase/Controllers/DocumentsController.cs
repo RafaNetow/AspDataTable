@@ -36,13 +36,19 @@ namespace MVCBase.Controllers
             }
             return PartialView(docModel);
         }
-
+    
         public FileResult ShowDocuments(int id)
         {
-            Documents Docu = context.Documents.FirstOrDefault(x => x.id == id);
-
-            return File(Docu.document, Docu.type);
+            Documents docu = context.Documents.FirstOrDefault(x => x.id == id);
+            
+           return File(docu.document, docu.type);
         }
-        
+
+        public ActionResult ShowLuis(int id )
+        {
+            Documents docuEntity = context.Documents.FirstOrDefault(x => x.id == id);
+            DocumentsModel docu = new DocumentsModel {FileBytes = docuEntity.document,Id = docuEntity.id};
+            return PartialView(docu);
+        }
     }
 }

@@ -29,97 +29,107 @@
 
 
 <button type="button" class="btn btn-danger" id="impButton">Import</button>
-<table id="TableVisit" class="table-bordered" style="width: 100%;">
+
+
+
+
+
+      <table id="TableContainer" col lang="5" class="display table-bordered" style="width: 100%;">
     <thead>
-    <tr>
-        <th>id</th>
-        <th>Visit</th>
-        <th>Line</th>
-        <th>vesseName</th>
-        <th>phase</th>
-        <th>date ata</th>
-        <th>date atd</th>
-        <th>date eta</th>
-        <th>date etd</th>
-        <th>serv</th>
-        <th>import</th>
-        <th>edit</th>
-        <th>Detalle</th>
-
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model)
-    {
         <tr>
-
-            <td>
-                @Html.HiddenFor(modelItem => item.Id)
-
-            </td>
-      
-             <td>
-                @Html.DisplayFor(modelItem => item.Visit)
-             
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Line)
-         
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VesselName)
-             
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phase)
-           
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ata)
-         
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Atd)
-            
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Etd)
-              
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Eta)
-               
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Serv)
-            
-
-            </td>
-   
-            <td>
-                @Html.CheckBoxFor(modelItem => item.Imp, new {data_unidad = item.Id})
-                @Html.HiddenFor(modelItem => item.Imp)
-            </td>
-
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.Id}, new {@class = "btn btn-default"})
-
-            </td>
-            <td>
-                <a href="@Url.Action("Information", "VesselVisit", new {id = item.Id})" class="btn btn-warning">
-                    details
-                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                </a>
-            </td>
+            <th>id</th>
+            <th>Visit</th>
+            <th>Line</th>
+            <th>vesseName</th>
+            <th>phase</th>
+            <th>date ata</th>
+            <th>date atd</th>
+            <th>date eta</th>
+            <th>date etd</th>
+            <th>serv</th>
+            <th>import</th>
+            <th>edit</th>
+            <th>Detalle</th>
 
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+            <tr>
+
+                <td>
+                     @Html.DisplayFor(modelItem => item.Id)
+                     @Html.HiddenFor(modelItem => item.Id)
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Visit)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Line)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VesselName)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phase)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ata)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Atd)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etd)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Eta)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serv)
+
+
+                </td>
+
+                <td>
+                    @Html.CheckBoxFor(modelItem => item.Imp, new { data_unidad = item.Id })
+                    @Html.HiddenFor(modelItem => item.Imp)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
+
+                </td>
+                <td>
+                    <a href="@Url.Action("Information", "VesselVisit", new {id = item.Id})" class="btn btn-warning">
+                        details
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    </a>
+                </td>
+
+            </tr>
+        }
     </tbody>
-   
+
 
 </table>
+
+
+
+  
 
 @*<div class="modal fade" id="myModal" role="dialog">
     @Html.Partial("~/Views/VesselVisit/Create.cshtml")*@
 @*</div>*@
-<script src="~/js/Contain/Indexjs.js"></script>
+<script src="~/js/Contain/Index.js"></script>

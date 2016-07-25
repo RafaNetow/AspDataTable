@@ -5,15 +5,24 @@
 }
 
 
-<table class="table">
 
 
-    <tr>
-        @Html.Partial("~/Views/VesselVisit/Index.cshtml", Model.VesselList)
-        @Html.Partial("~/Views/Container/Index.cshtml", Model.ContainerList)
-    </tr>
 
-</table>
+
+   <div class ="container-fluid">
+       <div class="row">
+           <div class="col-lg-5">
+               @Html.Partial("~/Views/VesselVisit/Index.cshtml", Model.VesselList)
+           </div>
+           <div class="col-lg-5 ">
+               @Html.Partial("~/Views/Container/Index.cshtml", Model.ContainerList)
+           </div>
+       </div>
+    </div>
+        
+    
+
+
 
       @Html.Partial("~/Views/Contacts/Index.cshtml")
 

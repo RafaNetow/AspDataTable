@@ -17,6 +17,18 @@
           <Property Name="tareWt" Type="numeric" Precision="15" Scale="2" />
           <Property Name="safewt" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
+        <EntityType Name="ContainerMirror">
+          <Key>
+            <PropertyRef Name="gKey" />
+          </Key>
+          <Property Name="gKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="equipmentNbr" Type="varchar(max)" />
+          <Property Name="typeIso" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="owner" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="typeLength" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="tareWt" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="safewt" Type="numeric" Precision="15" Scale="2" />
+        </EntityType>
         <EntityType Name="Documents">
           <Key>
             <PropertyRef Name="id" />
@@ -68,6 +80,7 @@
         </EntityType>
         <EntityContainer Name="Koala2ModelStoreContainer">
           <EntitySet Name="Container" EntityType="Self.Container" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContainerMirror" EntityType="Self.ContainerMirror" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VesselVisit" EntityType="Self.VesselVisit" Schema="dbo" store:Type="Tables" />
@@ -120,6 +133,7 @@
           <EntitySet Name="VesselVisit" EntityType="Self.VesselVisit" />
           <EntitySet Name="VesselVisitMirror" EntityType="Koala2Model.VesselVisitMirror" />
           <EntitySet Name="Documents" EntityType="Koala2Model.Documents" />
+          <EntitySet Name="ContainerMirror" EntityType="Koala2Model.ContainerMirror" />
         </EntityContainer>
         <EntityType Name="VesselVisitMirror">
           <Key>
@@ -144,6 +158,18 @@
           <Property Name="document" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ContainerMirror">
+          <Key>
+            <PropertyRef Name="gKey" />
+          </Key>
+          <Property Name="gKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="equipmentNbr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="typeIso" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="owner" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="typeLength" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="tareWt" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="safewt" Type="Decimal" Precision="15" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -214,6 +240,19 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="document" ColumnName="document" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContainerMirror">
+            <EntityTypeMapping TypeName="Koala2Model.ContainerMirror">
+              <MappingFragment StoreEntitySet="ContainerMirror">
+                <ScalarProperty Name="safewt" ColumnName="safewt" />
+                <ScalarProperty Name="tareWt" ColumnName="tareWt" />
+                <ScalarProperty Name="typeLength" ColumnName="typeLength" />
+                <ScalarProperty Name="owner" ColumnName="owner" />
+                <ScalarProperty Name="typeIso" ColumnName="typeIso" />
+                <ScalarProperty Name="equipmentNbr" ColumnName="equipmentNbr" />
+                <ScalarProperty Name="gKey" ColumnName="gKey" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

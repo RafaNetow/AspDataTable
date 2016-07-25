@@ -1,5 +1,48 @@
-﻿@model IEnumerable<MVCBase.Models.Documents.DocumentsModel>
+﻿@using MVCBase.Models.VesselVisit
+@model IEnumerable<MVCBase.Models.Documents.DocumentsModel>
 
+<div id="modal-container" role="document" class="modal affix" tabindex="-1" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        // Initialize numeric spinner input boxes
+        //$(".numeric-spinner").spinedit();
+        // Initialize modal dialog
+        // attach modal-container bootstrap attributes to links with .modal-link class.
+        // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+        $('body')
+            .on('click',
+                '.modal-link',
+                function(e) {
+                    e.preventDefault();
+                    $(this).attr('data-target', '#modal-container');
+                    $(this).attr('data-toggle', 'modal');
+                });
+        // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+        $('body')
+            .on('click',
+                '.modal-close-btn',
+                function() {
+                    $('#modal-container').modal('hide');
+                });
+        //clear modal cache, so that new content can be loaded
+        $('#modal-container')
+            .on('hidden.bs.modal',
+                function() {
+                    $(this).removeData('bs.modal');
+                });
+        $('#CancelModal')
+            .on('click',
+                function() {
+                    return false;
+                });
+    });
+</script>
 
 <table class="table">
     <tr>
@@ -13,31 +56,35 @@
             @Html.DisplayNameFor(model => model.Type)
         </th>
         <th>
-           Document Detail
+            Document Detail
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+                @Html.HiddenFor(modelItem =>item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.ActionLink("Ver Info", "ShowDocuments",
-         new { controller = "Documents", item.Id },
-         new { @class = "fa-file-archive-o" })
-        </td>
-        
-       
-    </tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                <button type="button"  onclick="saveId(@Html.DisplayFor(modelItem => item.Id))" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" data-keyboard="false" data-backdrop="static">Show File</button>
+                @Html.ActionLink("Show.Luis",  "ShowLuis", new  { id = item.Id }, new { @class = "modal-link btn btn-success "})
+           
+            </td>
+
+
+        </tr>
+    }
 
 </table>
+
+<script src="~/js/Documents/LoadImage.js"></script>

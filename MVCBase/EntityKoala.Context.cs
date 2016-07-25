@@ -30,5 +30,6 @@ namespace MVCBase
         public virtual DbSet<VesselVisit> VesselVisit { get; set; }
         public virtual DbSet<VesselVisitMirror> VesselVisitMirror { get; set; }
         public virtual DbSet<Documents> Documents { get; set; }
+        public virtual DbSet<ContainerMirror> ContainerMirror { get; set; }
     }
 }

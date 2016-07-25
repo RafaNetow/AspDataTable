@@ -60,8 +60,6 @@ namespace MVCBase.Controllers
         public ActionResult Create(ContainerViewModel model)
         {
 
-            if (ModelState.IsValid)
-            {
 
 
 
@@ -72,63 +70,90 @@ namespace MVCBase.Controllers
 
                 return RedirectToAction("Index");
 
-            }
-            return View(model);
+         
 
         }
 
-      /*  // GET: Container/Edit/5
-        public ActionResult Edit(int id)
-        {
-            var model = servo.SearchContiner(id);
+        /*  // GET: Container/Edit/5
+          public ActionResult Edit(int id)
+          {
+              var model = servo.SearchContiner(id);
 
-            var automapperModel = AutoMapper.Mapper.Map<ContainerModel>(model);
+              var automapperModel = AutoMapper.Mapper.Map<ContainerModel>(model);
 
-            return View(automapperModel);
-        }
+              return View(automapperModel);
+          }
 
-        // POST: Container/Edit/5
+          // POST: Container/Edit/5
+          [HttpPost]
+          public ActionResult Edit(int id, ContainerModel model)
+          {
+              try
+              {
+
+
+                  var automapperContainer = AutoMapper.Mapper.Map<Container>(model);
+
+
+                  servo.EditContainer(automapperContainer);
+
+                  return RedirectToAction("Index");
+              }
+              catch (Exception e)
+              {
+                  return View();
+              }
+          }
+
+          // GET: Container/Delete/5
+          public ActionResult Delete(int id)
+          {
+              return View();
+          }
+
+          // POST: Container/Delete/5
+          [HttpPost]
+          public ActionResult Delete(int id, FormCollection collection)
+          {
+              try
+              {
+                  // TODO: Add delete logic here
+
+                  return RedirectToAction("Index");
+              }
+              catch
+              {
+                  return View();
+              }
+          }*/
         [HttpPost]
-        public ActionResult Edit(int id, ContainerModel model)
+        public ActionResult MigrateData(int[] IdList)
         {
-            try
+            if (IdList != null)
             {
+                for (int i = 0; i < IdList.Length; i++)
+                {
+                    int index = IdList[i];
+                    Container result = context.Container.SingleOrDefault(x => x.gKey == index);
 
+                    ContainerMirror newContainertMirror = new ContainerMirror
+                    {
+                       gKey = result.gKey,
+                       equipmentNbr = result.equipmentNbr,
+                       owner = result.owner,
+                       safewt = result.safewt,
+                       tareWt = result.tareWt,
+                       typeIso = result.typeIso,
+                       typeLength = result.typeLength
 
-                var automapperContainer = AutoMapper.Mapper.Map<Container>(model);
-
-
-                servo.EditContainer(automapperContainer);
-
-                return RedirectToAction("Index");
+                    };
+                    context.ContainerMirror.Add(newContainertMirror);
+                    context.SaveChanges();
+                }
             }
-            catch (Exception e)
-            {
-                return View();
-            }
+
+            return null;
         }
-
-        // GET: Container/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Container/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }*/
     }
 
 }

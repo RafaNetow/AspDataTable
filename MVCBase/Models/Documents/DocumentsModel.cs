@@ -13,5 +13,6 @@ namespace MVCBase.Models.Documents
         public HttpPostedFileBase File { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
+        public byte[] FileBytes { get; set; }
     }
 }

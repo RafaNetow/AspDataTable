@@ -10,6 +10,7 @@
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">New Container</button>
 
 <!-- Modal -->
+<button type="button" class="btn btn-danger" id="impButton">Import</button>
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -30,10 +31,11 @@
     </div>
 </div>
 
-<table id="TableContain" col lang="5" class="display table-bordered" style="width: 100%;" >
+<table id="TableContainer"  class="display table-bordered" style="width: 100%;">
 
     <thead>
         <tr>
+            <th>id</th>
             <th>equipament</th>
             <th>typeIso</th>
             <th>owner</th>
@@ -49,6 +51,11 @@
         {
 
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gKey)
+                    @Html.HiddenFor(modelItem => item.gKey)
+
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.equipmentNbr)
                 </td>
@@ -68,11 +75,10 @@
                     @Html.DisplayFor(modelItem => item.safewt)
                 </td>
                 <td>
-                    <div class="col-md-10">
-                        @Html.EditorFor(modelItem => item.Imp, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-
+                    @Html.CheckBoxFor(modelItem => item.Imp, new { data_unidad = item.gKey })
+                    @Html.HiddenFor(modelItem => item.Imp)
                 </td>
+                
 
             </tr>
 
@@ -80,4 +86,4 @@
     </tbody>
 
 </table>
-<script src="~/js/VesselVisit/Index.js"></script>
+<script src="~/js/Contain/Index.js"></script>
