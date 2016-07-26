@@ -55,23 +55,9 @@
                 }
                 $(this).css("background-color", "#ECF8E0");
             });
-   
-            $.ajax({
-                url:  "/VesselVisit/Information",
-                data: { id: idContainer },
-                type: "GET",
-                contentType: "application/json ",
-                success: function (html) {
-               
-               
-                    console.log("todo bien");
-                }, error: function (err) {
-                   var url = "/VesselVisit/Information/" + idContainer;
 
-                    console.log(err);
-                }
-            });
-       
+            window.location.href = "../Container/Information/"+idContainer;
+
     });
     $("#impButton")
         .on("click",

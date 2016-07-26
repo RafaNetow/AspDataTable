@@ -8,6 +8,7 @@
 
 
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<script src="/Scripts/jquery.responsiveiframe.js"></script>
 @Html.HiddenFor(modelItem => Model.Phase)
 <div id="carousel-example-generic" class="carousel slide" data-ride="">
     <!-- Indicators -->
@@ -50,39 +51,38 @@
 </div>
 <div class="w3-container w3-red ">
     <h2>Name of Vessel : @Html.DisplayFor(modelItem => Model.VesselName)</h2>
-    <h4>Phase</h4>
-    <div data-role="remove" class="tag label label-info  "> @Html.DisplayFor(modelItem => Model.Phase)</div>
+  
+    <h4> Phase :<div data-role="remove" class="tag label label-info  "> @Html.DisplayFor(modelItem => Model.Phase)</div></h4>
 
 </div>
 
 
-    <!-- widget options:
-        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+<!-- widget options:
+usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-        data-widget-colorbutton="false"
-        data-widget-editbutton="false"
-        data-widget-togglebutton="false"
-        data-widget-deletebutton="false"
-        data-widget-fullscreenbutton="false"
-        data-widget-custombutton="false"
-        data-widget-collapsed="true"
-        data-widget-sortable="false"
+data-widget-colorbutton="false"
+data-widget-editbutton="false"
+data-widget-togglebutton="false"
+data-widget-deletebutton="false"
+data-widget-fullscreenbutton="false"
+data-widget-custombutton="false"
+data-widget-collapsed="true"
+data-widget-sortable="false"
 
-    -->
+-->
+<div class="jarviswidget jarviswidget-sortable jarviswidget-color-greenLight" id="wid-id-0" role="widget" style="" data-widget-attstyle="jarviswidget-color-greenLight">
     <header role="heading">
         <div class="jarviswidget-ctrls" role="menu">
-            <a href="javascript:void(0);" class="button-icon jarviswidget-edit-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Edit Title"><i class="fa fa-cog"></i></a>
-            <a href="javascript:void(0);" class="button-icon jarviswidget-min" rel="tooltip" title="" data-placement="bottom" data-original-title="Edit Title"><i class="fa fa-cog"></i></a>
-            <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Edit Title"><i  class="fa-minus "></i></a>
+            <a href="#" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a>
 
         </div>
-        <h2><strong>Information</strong> <i>Vessel Visit</i></h2>
-       
+        <h4><strong>Information: </strong> <i>Vessel Visit</i></h4>
+
         <span class="jarviswidget-loader" style="display: none;"><i class="fa fa-refresh fa-spin"></i></span>
     </header>
 
     <!-- widget div-->
-    <div>
+ 
 
         <!-- widget edit box -->
         <div class="jarviswidget-editbox" style="display: none;">
@@ -93,27 +93,27 @@
         </div>
         <!-- end widget edit box -->
         <!-- widget content -->
-     
-         <div class="widget-body">
+
+        <div class="widget-body">
 
             <div class="container ">
 
-               
-                <br/>
-                     <div id="modal-container" role="document" class="modal affix" tabindex="-1" data-backdrop="static">
+
+                <br />
+                <div id="modal-container" role="img" class="modal affix"  >
                     <div class="modal-dialog">
                         <div class="modal-content"></div>
                     </div>
- 
-                  </div>
- 
-               
+
+                </div>
+
+
 
 
                 <div class="panel-group smart-accordion-default" id="accordion-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4> <a data-toggle="collapse" data-parent="#accordion-2" href="#collapseOne-1" aria-expanded="false" class="collapsed"> <i class="fa fa-fw fa-plus-circle txt-color-green"></i> <i class="fa fa-fw fa-minus-circle txt-color-red"></i> Fechas </a></h4>
+                            <h4> <a data-toggle="collapse" data-parent="#accordion-2" href="#collapseOne-1" aria-expanded="false" class="collapsed"> <i class="fa fa-fw fa-plus-circle txt-color-green"></i>  Fechas </a></h4>
                         </div>
                         <div id="collapseOne-1" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                             <div class="panel-body">
@@ -150,7 +150,7 @@
                     <div class="panel-group smart-accordion-default" id="accordion-1">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4> <a data-toggle="collapse" data-parent="#accordion-1" href="#collapseOne-2" aria-expanded="false" class="collapsed"> <i class="fa fa-fw fa-plus-circle txt-color-green"></i> <i class="fa fa-fw fa-minus-circle txt-color-red"></i> Documentos </a></h4>
+                                <h4> <a data-toggle="collapse" data-parent="#accordion-1" href="#collapseOne-2" aria-expanded="false" class="collapsed"> <i class="fa fa-fw fa-plus-circle txt-color-green"></i>  Documentos </a></h4>
                             </div>
                             <div id="collapseOne-2" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                                 <div class="panel-body">
@@ -177,24 +177,24 @@
 
 
                     </div>
-                
-              
 
 
 
 
+
+
+
+                </div>
+
+                <!-- end widget content -->
 
             </div>
+            <!-- end widget div -->
 
-        <!-- end widget content -->
+        </div>
+
+
+
 
     </div>
-    <!-- end widget div -->
-
-</div>
-
-
-
-
-</div>
 

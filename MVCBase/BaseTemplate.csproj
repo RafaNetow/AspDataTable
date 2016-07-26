@@ -826,6 +826,7 @@
     <Content Include="js\plugin\x-editable\jquery.mockjax.min.js" />
     <Content Include="js\plugin\x-editable\moment.min.js" />
     <Content Include="js\plugin\x-editable\x-editable.min.js" />
+    <Content Include="js\responsive.js" />
     <Content Include="js\smartwidgets\jarvis.widget.min.js" />
     <Content Include="js\VesselVisit\speech\voicecommand.min.js" />
     <Content Include="js\VesselVisit\Index.js" />
@@ -843,6 +844,7 @@
     <Content Include="EntityKoala.edmx.diagram">
       <DependentUpon>EntityKoala.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery.responsiveiframe.js" />
     <Content Include="sound\bigbox.mp3" />
     <Content Include="sound\license.txt" />
     <Content Include="sound\messagebox.mp3" />
@@ -988,6 +990,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
