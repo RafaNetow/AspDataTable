@@ -102,13 +102,13 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h3>EquipementNbr</h3>
-                                        @Html.DisplayFor(modelItem => Model.equipmentNbr)
-                                        @Html.HiddenFor(modelItem => Model.equipmentNbr)
+                                        @Html.DisplayFor(modelItem => Model.EquipmentNbr)
+                                        @Html.HiddenFor(modelItem => Model.EquipmentNbr)
                                     </div>
                                     <div class="col-lg-6">
                                         <h3>Owner</h3>
-                                        <p> @Html.DisplayFor(modelItem => Model.owner) </p>
-                                        @Html.HiddenFor(modelItem => Model.owner)
+                                        <p> @Html.DisplayFor(modelItem => Model.Owner) </p>
+                                        @Html.HiddenFor(modelItem => Model.Owner)
                                     </div>
 
 
@@ -116,13 +116,13 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h3>SafeWt</h3>
-                                        @Html.DisplayFor(modelItem => Model.safewt)
-                                        @Html.HiddenFor(modelItem => Model.safewt)
+                                        @Html.DisplayFor(modelItem => Model.Safewt)
+                                        @Html.HiddenFor(modelItem => Model.Safewt)
                                     </div>
                                     <div class="col-lg-6">
                                         <h3>TareWt</h3>
-                                        <p> @Html.DisplayFor(modelItem => Model.tareWt) </p>
-                                        @Html.HiddenFor(modelItem => Model.tareWt)
+                                        <p> @Html.DisplayFor(modelItem => Model.TareWt) </p>
+                                        @Html.HiddenFor(modelItem => Model.TareWt)
                                     </div>
 
 
@@ -140,7 +140,7 @@
                                     @using (Html.BeginForm("SaveDocuments", "Container", FormMethod.Post, new
                                     { enctype = "multipart/form-data" }))
                                     {
-                                        @Html.HiddenFor(modelItem => Model.gKey)
+                                        @Html.HiddenFor(modelItem => Model.GKey)
 
                                         <input id="File" name="File" multiple="" type="file" value="">
 

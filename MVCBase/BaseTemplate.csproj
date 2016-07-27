@@ -901,6 +901,7 @@
     <Compile Include="Controllers\ContainerController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MasterViewController.cs" />
     <Compile Include="Controllers\VesselVisitController.cs" />
     <Compile Include="Documents.cs">
       <DependentUpon>EntityKoala.tt</DependentUpon>
@@ -929,6 +930,8 @@
     <Compile Include="Models\Container\ContainerViewModel.cs" />
     <Compile Include="Models\Documents\DocumentsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Object\ObjectModal.cs" />
+    <Compile Include="Models\Object\ObjectProperties.cs" />
     <Compile Include="Models\VesselVisit\VesselVisitModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -981,6 +984,7 @@
     <Content Include="Views\Documents\Detail.cshtml" />
     <None Include="Views\Container\Information.cshtml" />
     <None Include="Views\Documents\ShowLuis.cshtml" />
+    <None Include="Views\MasterView\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -990,7 +994,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

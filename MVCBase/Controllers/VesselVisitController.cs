@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using MVCBase.Models.Container;
 using MVCBase.Models.Documents;
+using MVCBase.Models.Object;
 using MVCBase.Models.VesselVisit;
 
 
@@ -41,10 +43,40 @@ namespace MVCBase.Controllers
                 visitModels.Add(AutoMapper.Mapper.Map<VesselVisitModel>(visit));
             }
 
+        
 
+            ObjectModal  vessel = new ObjectModal();
+            Type modelObject = new VesselVisitModel().GetType();
+            PropertyInfo[] infoProperties = modelObject.GetProperties();
+            foreach (var property in infoProperties)
+            {
+                vessel.PropertiesName.Add(property);
+            }
+                foreach (var entity in visitEntity)
+                {
+                ObjectProperties currentProperties = new ObjectProperties();
+                foreach (var propertyInfo in entity.GetType().GetProperties())
+                    {
+                      
+                        object value = propertyInfo.GetValue(entity, null);
+                        currentProperties.PropertiesData.Add(value);
+
+
+                    }
+                vessel.AllObjects.Add(currentProperties);
+                }
+                   
+       
+         
+                    
+
+                    
             
-                return View(visitModels);
-            
+
+        
+            return RedirectToAction("Index", "MasterView",new ObjectModal {AllObjects = vessel.AllObjects});
+
+
         }
 
         public ActionResult Create()
@@ -179,7 +211,7 @@ namespace MVCBase.Controllers
 
             //File.WriteAllBytes(model.File.InputStream, arrayBytes);
 
-            return RedirectToAction("Information", new { id = model.gKey });
+            return RedirectToAction("Information", new { id = model.GKey });
         }
 
         public static byte[] ReadFully(Stream input)

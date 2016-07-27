@@ -22,7 +22,7 @@ namespace MVCBase.Models.VesselVisit
         public string VesselName { get; set; }
 
 
-        public string CallMember { get; set; }
+      
         [Required(ErrorMessage = "requerid field")]
         public string Phase { get; set; }
 
@@ -41,7 +41,7 @@ namespace MVCBase.Models.VesselVisit
 
         [Required(ErrorMessage = "requerid field")]
         public string Serv { get; set; }
-        public string ControlerOwner { get; set; }
+
   
         public HttpPostedFileBase []File { get; set; }
         public  bool Imp { get; set; }

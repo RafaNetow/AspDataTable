@@ -15,22 +15,22 @@ namespace MVCBase.Infracstructure
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Container, ContainerViewModel>()
-                    .ForMember(des => des.equipmentNbr, or => or.MapFrom(f => f.equipmentNbr))
-                    .ForMember(des => des.typeIso, or => or.MapFrom(f => f.typeIso))
-                    .ForMember(des => des.gKey, or => or.MapFrom(f => f.gKey))
-                    .ForMember(des => des.owner, or => or.MapFrom(f => f.owner))
-                    .ForMember(des => des.safewt, or => or.MapFrom(f => f.safewt))
-                    .ForMember(des => des.tareWt, or => or.MapFrom(f => f.tareWt))
-                    .ForMember(des => des.typeLength, or => or.MapFrom(f => f.typeLength));
+                    .ForMember(des => des.EquipmentNbr, or => or.MapFrom(f => f.equipmentNbr))
+                    .ForMember(des => des.TypeIso, or => or.MapFrom(f => f.typeIso))
+                    .ForMember(des => des.GKey, or => or.MapFrom(f => f.gKey))
+                    .ForMember(des => des.Owner, or => or.MapFrom(f => f.owner))
+                    .ForMember(des => des.Safewt, or => or.MapFrom(f => f.safewt))
+                    .ForMember(des => des.TareWt, or => or.MapFrom(f => f.tareWt))
+                    .ForMember(des => des.TypeLength, or => or.MapFrom(f => f.typeLength));
 
                 cfg.CreateMap<ContainerViewModel, Container>()
-                    .ForMember(des => des.equipmentNbr, or => or.MapFrom(f => f.equipmentNbr))
-                    .ForMember(des => des.typeIso, or => or.MapFrom(f => f.typeIso))
-                    .ForMember(des => des.gKey, or => or.MapFrom(f => f.gKey))
-                    .ForMember(des => des.owner, or => or.MapFrom(f => f.owner))
-                    .ForMember(des => des.safewt, or => or.MapFrom(f => f.safewt))
-                    .ForMember(des => des.tareWt, or => or.MapFrom(f => f.tareWt))
-                    .ForMember(des => des.typeLength, or => or.MapFrom(f => f.typeLength));
+                    .ForMember(des => des.equipmentNbr, or => or.MapFrom(f => f.EquipmentNbr))
+                    .ForMember(des => des.typeIso, or => or.MapFrom(f => f.TypeIso))
+                    .ForMember(des => des.gKey, or => or.MapFrom(f => f.GKey))
+                    .ForMember(des => des.owner, or => or.MapFrom(f => f.Owner))
+                    .ForMember(des => des.safewt, or => or.MapFrom(f => f.Safewt))
+                    .ForMember(des => des.tareWt, or => or.MapFrom(f => f.TareWt))
+                    .ForMember(des => des.typeLength, or => or.MapFrom(f => f.TypeLength));
                     
                 cfg.CreateMap<VesselVisit, VesselVisitModel>()
                     .ForMember(des => des.Id, or => or.MapFrom(f => f.id))

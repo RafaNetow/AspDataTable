@@ -7,13 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Drawing.Printing;
+using Microsoft.Ajax.Utilities;
+
 namespace MVCBase
 {
     using System;
     using System.Collections.Generic;
-    
+
+   
     public partial class VesselVisit
     {
+
         public int id { get; set; }
         public string visit { get; set; }
         public string line { get; set; }
@@ -25,4 +30,6 @@ namespace MVCBase
         public Nullable<System.DateTime> etd { get; set; }
         public string serv { get; set; }
     }
+
+    
 }
