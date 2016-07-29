@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -47,18 +48,26 @@ namespace MVCBase.Controllers
 
             ObjectModal  vessel = new ObjectModal();
             Type modelObject = new VesselVisitModel().GetType();
+
+
             PropertyInfo[] infoProperties = modelObject.GetProperties();
+
+          
             foreach (var property in infoProperties)
             {
                 vessel.PropertiesName.Add(property);
             }
                 foreach (var entity in visitEntity)
                 {
+              
                 ObjectProperties currentProperties = new ObjectProperties();
                 foreach (var propertyInfo in entity.GetType().GetProperties())
-                    {
-                      
-                        object value = propertyInfo.GetValue(entity, null);
+                {
+
+                    var propertyAttributes = Attribute.GetCustomAttributes(propertyInfo);
+
+
+                    object value = propertyInfo.GetValue(entity, null);
                         currentProperties.PropertiesData.Add(value);
 
 
@@ -67,8 +76,8 @@ namespace MVCBase.Controllers
                 }
                    
        
-         
-                    
+      
+                
 
                     
             

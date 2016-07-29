@@ -8,6 +8,7 @@
 /// <reference path="../js/documents/loadimage.js" />
 /// <reference path="../js/libs/jquery-2.0.2.min.js" />
 /// <reference path="../js/libs/jquery-ui-1.10.3.min.js" />
+/// <reference path="../js/masterview/index.js" />
 /// <reference path="../js/notification/SmartNotification.min.js" />
 /// <reference path="../js/plugin/bootstrap-progressbar/bootstrap-progressbar.min.js" />
 /// <reference path="../js/plugin/bootstrap-slider/bootstrap-slider.min.js" />

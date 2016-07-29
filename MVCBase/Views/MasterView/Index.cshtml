@@ -1,18 +1,66 @@
-﻿@model TModel
+﻿@using System.ComponentModel
+@using System.ComponentModel.DataAnnotations
+@model IEnumerable<object>
 
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
+   @ViewBag.ControllerName
+    @if (Model.Any())
+    {<table id="TableMaster" class="display table-bordered">
+        <thead>
+            <tr>
+                @foreach (var property in Model.First().GetType().GetProperties())
+                {
+                    var attr = property.GetCustomAttributes(typeof(DisplayAttribute), false);
+                    if (attr.Length>0)
+                    {
+                        var name = attr[0] as DisplayAttribute;
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+                       <th>@name.Name</th>
+                  }
+                  else
+                  {
+                    <th>@property.Name</th>
+                  }
+                }
+
+
+            </tr>
+        </thead>
+        <tbody>
+           @*   foreach (var entity in visitEntity)
+    {
+    ObjectProperties currentProperties = new ObjectProperties();
+    foreach (var propertyInfo in entity.GetType().GetProperties())
+        {
+
+            object value = propertyInfo.GetValue(entity, null);
+            currentProperties.PropertiesData.Add(value);
+
+
+        }
+    vessel.AllObjects.Add(currentProperties);
+    } *@
+
+        
+            @foreach (var entity in Model)
+            {
+                
+                <tr>
+                    @foreach (var propertyInfo in entity.GetType().GetProperties())
+                    {
+                    <td>
+
+                        @propertyInfo.GetValue(entity)
+                    </td>
+
+
+                    }
+                </tr>
+                
+            }
+        </tbody>
+
+    </table>
+    }
+
+<script src="~/js/MasterView/Index.js"></script>
